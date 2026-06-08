@@ -20,21 +20,27 @@ $form.Controls.Add($label)
 [void]$form.ShowDialog()
 ```
 
-## Testing the code manually
+## Testing the script file manually
 
+```powershell
 powershell -STA -ExecutionPolicy Bypass -File "C:\interval_reminder.ps1"
+```
 
 ## Code tasks
 
 ### Logon
 
+```powershell
 schtasks /Create /TN "HaircutReminder_Logon" /SC ONLOGON /F ^
 /TR "powershell -STA -ExecutionPolicy Bypass -File C:\interval_reminder.ps1"
+```
 
 ### 72 hours interval
 
+```powershell
 schtasks /Create /TN "HaircutReminder_72h" /SC HOURLY /MO 72 /F ^
 /TR "powershell -STA -ExecutionPolicy Bypass -File C:\interval_reminder.ps1"
+```
 
 ## Stopping the tasks
 
